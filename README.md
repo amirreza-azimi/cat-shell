@@ -34,6 +34,6 @@ This shell is for **Windows** not linux or macOS.
 ---
 
 ## License
->You can check out the full license [here](https://https://github.com/amirreza-azimi/cat-shell/LICENSE)
+>You can check out the full license [here](https://github.com/amirreza-azimi/cat-shell/LICENSE)
 
 This project is licensed under the terms of the **MIT** license.
