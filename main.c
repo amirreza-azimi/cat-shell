@@ -33,11 +33,11 @@ void cmd_food() {
 }
 
 void cmd_help() {
-    printf("\nCat is here to help you!\n\nExclusive Commands:\n\n    1.hello -> you can just say hello to computer.\n    2.clean -> this is just cls.\n    3.whereismycat -> this is pwd but with more fun.\n    4.catfood -> showing folder and files like dir.\n\nYou can see a full list of Exclusive Commands in:\n\n    https://www.catweb.com\n\nYou can see a full list of not exclusive commands (cmd commands) in:\n\n    https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands\n\n");
+    printf("\nCat is here to help you!\n\nExclusive Commands:\n\n    1.hello -> you can just say hello to computer.\n    2.clean -> this is just cls.\n    3.whereismycat -> this is pwd but with more fun.\n    4.catfood -> showing folder and files like dir.\n\nYou can see a full list of not exclusive commands (cmd commands) in:\n\n    https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands\n\n");
 }
 
 void cmd_version() {
-    printf("\nCat is in version -.-.-.\n\n");
+    printf("\nCat is in version 1.0.0.\n\n");
 }
 
 void cmd_history() {
@@ -171,4 +171,5 @@ int main() {
 
 
 // have a nice day or night or ... i don't know just bye.
+
 
