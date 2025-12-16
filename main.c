@@ -26,7 +26,7 @@ void run_command(char **argv) {
 
     char full_command[MAX];
     snprintf(full_command, MAX, "cmd /c %s", cmdline);
-
+    
     if (!CreateProcessA(
         NULL,
         full_command,
@@ -39,7 +39,9 @@ void run_command(char **argv) {
         &si,
         &pi
     )) {
+        printf("\e[0;31m");
         printf("ERROR: Could not run command\n");
+        printf("\033[0m");
         return;
     }
 
@@ -74,12 +76,8 @@ void cmd_foods() {
     run_command(argv);
 }
 
-void cmd_help() {
-    printf("\nCat is here to help you!\n\nExclusive Commands:\n\n    1.hey -> you can just say hello to computer.\n    2.clean -> this is just cls.\n    3.whereismycat -> this is pwd but with more fun.\n    4.catfood -> showing folder and files like dir.\n\nYou can see a full list of Exclusive Commands in:\n\n    https://www.catweb.com\n\nYou can see a full list of not exclusive commands (cmd commands) in:\n\n    https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands\n\n");
-}
-
 void cmd_version() {
-    printf("\nCat is in version 1.1.0.\n\n");
+    printf("\nCat is in version 0.5.0.\n\n");
 }
 
 void cmd_history() {
@@ -95,7 +93,6 @@ CustomCommand commands[] = {
     {"clean", cmd_clean},
     {"whereismycat", cmd_path},
     {"catfoods", cmd_foods},
-    {"help", cmd_help},
     {"mycatversion", cmd_version},
     {"catmeows", cmd_history},
     {NULL, NULL},
@@ -128,14 +125,18 @@ int main() {
     printf(" \\______/__/     \\__\\  |__|        |_______/    |__|  |__| |_______||_______||_______|\n");
     printf("                    +-------------------------------------------+\n");
     printf("                    |                 cat shell                 |\n");
-    printf("                    +-------------------------------------------+\n");
+    printf("                    +-------------------------------------------+\n\n");
     
     printf("\033[0m"); // reset
 
     while(1){
-
         GetCurrentDirectoryA(MAX, cwd);
-        printf("caaaaaaaaaat> ");
+        SYSTEMTIME st;
+        GetLocalTime(&st);
+
+        printf("\e[0;34m");
+        printf("[%02d:%02d][CAT@%s]$ ",st.wHour, st.wMinute, cwd);
+        printf("\033[0m");
         
         fgets(input, MAX, stdin);
         input[strcspn(input, "\n")] = '\0';
@@ -146,7 +147,9 @@ int main() {
         
         if (strcmp(argv[0], "cd") == 0) {
             if (argc < 2) {
+                printf("\e[0;31m");
                 printf("cd: missing path\n");
+                printf("\033[0m");
             } else {
                 SetCurrentDirectoryA(argv[1]);
             }
